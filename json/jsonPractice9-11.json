@@ -1,0 +1,55 @@
+{
+    "games": [
+        {
+            "name": "game1",
+            "rating": 3,
+            "release date": "2023-12-01",
+            "characters": [
+                {
+                    "name": "A",
+                    "class": "fighter",
+                    "strength_level": "high"
+                },
+                {
+                    "name": "B",
+                    "class": "preist",
+                    "strength_level": "low"
+                }
+            ]
+        },
+        {
+            "name": "game2",
+            "rating": 4,
+            "release date": "2023-11-01",
+            "characters": [
+                {
+                    "name": "C",
+                    "class": "mage",
+                    "strength_level": "low"
+                },
+                {
+                    "name": "D",
+                    "class": "bard",
+                    "strength_level": "mid"
+                }
+            ]
+        },
+        {
+            "name": "game3",
+            "rating": 4.5,
+            "release date": "2024-6-01",
+            "characters": [
+                {
+                    "name": "E",
+                    "class": "knight",
+                    "strength_level": "low"
+                },
+                {
+                    "name": "F",
+                    "class": "archer",
+                    "strength_level": "mid"
+                }
+            ]
+        }
+    ]
+}

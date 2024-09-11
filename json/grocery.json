@@ -1,0 +1,30 @@
+{
+    "fruits": [
+        {
+            "name": "apple",
+            "price": 1.39
+        },
+        {
+            "name": "banana",
+            "price": 0.89
+        },
+        {
+            "name": "strawberries",
+            "price": 5.99
+        }
+    ],
+    "veggies": [
+        {
+            "name": "tomatoes",
+            "price": 1.39
+        },
+        {
+            "name": "spinach",
+            "price": 0.89
+        },
+        {
+            "name": "lettuce",
+            "price": 5.99
+        }
+    ]
+}
