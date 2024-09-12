@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ZIM - Animation - Code Creativity</title>
+
+    <!-- zimjs.com - JavaScript Canvas Framework -->
+    <script type="module">
+
+        import zim from "https://zimjs.org/cdn/016/zim";
+
+        // See Docs under Frame for FIT, FILL, FULL, and TAG
+        new Frame(FIT, 1024, 768, light, dark, ready);
+        function ready() {
+
+            // given F (Frame), S (Stage), W (width), H (height)
+            // put code here
+
+            //.new grid()
+
+            // Registration point is where an object is placed 
+            // also objects rotate and scale about the registration point
+
+            // new Rectangle()
+            //     // .centerReg() // centers and centers the registration
+            //     .loc(100,100)
+            //     .reg(CENTER)
+            //     // .outline()
+            //     // .rot(45)
+            //     // .sca(2)
+            //     .animate({
+            //         props:{rotation:360},
+            //         time:2,
+            //         loop:true,
+            //         ease:"linear"
+            //     })
+
+            new Rectangle(100, 100, purple)
+                .centerReg() // centers and centers the registration
+                // .loc(100, 100)
+                // .reg(CENTER)
+                // .outline()
+                // .rot(45)
+                // .sca(2)
+                .animate({
+                    props: { scale: 3, color: red },
+                    time: 1,
+                    loop: true,
+                    // ease: "linear",
+                    rewind: true,
+                })
+
+            new Circle()
+                .loc(100, 100)
+                // .animate({ x: 500 }, 1, "elasticOut");
+                .animate({ x: 500 }, 1, "backInOut");
+
+            new Circle()
+                .loc(900, 100)
+                .animate({ y: 700 }, 1.5, "bounceOut",);
+                
+
+        } // end ready
+
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+
+<body></body>
+
+</html>
