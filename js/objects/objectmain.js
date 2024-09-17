@@ -105,3 +105,22 @@ dog.move();
 
 let initial = "A";
 initial = "B";
+
+let numbers = [1, 2, 3, 4, 5];
+
+for(let i=0; i<numbers.length; i++){
+	console.log(numbers[i] *2 );
+}
+
+let whatToDoInLoop = function(element){
+      console.log(element*2);
+}
+
+numbers.forEach(whatToDoInLoop);
+
+
+
+
+
+
+
