@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM - Code Creativity</title>
+
+<!-- zimjs.com - JavaScript Canvas Framework -->
+<script type="module">
+
+import zim from "https://zimjs.org/cdn/016/zim";
+
+// See Docs under Frame for FIT, FILL, FULL, and TAG
+new Frame(FIT, 1024, 768, light, dark, ready);
+function ready() {
+    
+    // given F (Frame), S (Stage), W (width), H (height)
+    // put code here
+
+    // ZIM Display Object
+    // use new keyword to make a circle object from a Circle class
+    
+    new Circle(100, purple)
+        // .loc(100,100)
+        // .pos(30,30,RIGHT,BOTTOM)
+        .center()
+        .drag();
+
+    // JavaScript Basics
+
+    // variables (used to use var but not anymore)
+    const c = "Cannot Change"; // cannot change
+    let x = 10; // I can change
+    x = 20;
+
+    console.log(x); // F12 to get to console
+    zogb(c);
+
+    const a = ["A", "B", "C"];
+
+    zog(a[0]); // index starts at 0 - this will be "A"
+    
+    for(let i=0; i<a.length; i++) {
+       // zog(i); 
+       zog(a[i])
+    }
+
+    // object literal with property:value
+    const o = {name:"Chen", hair:"dark"};
+    // a conditional - if and else if and else
+    if (o.hair == "dark") {
+        // concatenation - join words with +
+        zogp("my name is " + o.name)
+    }
+
+    // a function does a block of code between {}
+    function doSomething(num) {
+        zog(num)
+    }
+    doSomething(100);
+
+    // new Button(null, null, "TEST").loc(100,100)
+    // configuration object (object literal) ZIM DUO
+    new Button({label:"TEST"}).loc(100,100).tap(doTap)
+
+    function doTap(e) {
+        // e.target is what is clicked on
+        e.target.alp(0)
+    }
+
+    // // Same as above with arrow function (preferable)
+    // new Button({label:"TEST"}).loc(100,100).tap(e=>{
+    //     // e.target is what is clicked on
+    //     e.target.alp(0)
+    // });
+
+    const flowers = new Container(W,H).addTo();
+    loop(10, ()=>{
+        new Circle(100,[red,pink,yellow])
+            .loc(rand(W), rand(H), flowers)
+    });
+
+    flowers.loop(flower=>{
+        zog(flower.color)
+    });
+
+    const words = ["test", "isomorphism", "no", "pass"]
+
+    // const words = series("test", "isomorphism", "no", "pass").every(2)
+    interval([1,2], ()=>{
+        // use the pluck() function to get a random word
+        // zog(words[rand(words.length-1)])
+        zog(pluck(words))
+        // zogb(words());
+    })
+
+
+
+
+
+
+
+
+    
+
+    
+        
+} // end ready
+
+</script>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body></body>
+</html>
