@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM - Test Takeup - Code Creativity</title>
+
+<!-- zimjs.com - JavaScript Canvas Framework -->
+<script type="module">
+
+import zim from "https://zimjs.org/cdn/016/zim";
+
+// See Docs under Frame for FIT, FILL, FULL, and TAG
+new Frame(FIT, 1024, 768, light, dark, ready);
+function ready() {
+
+    // given F (Frame), S (Stage), W (width), H (height)
+    // put code here
+
+    // const monsters = new Container(W,H).addTo();
+    // loop(10, ()=>{
+    //     new Triangle().loc(rand(W), rand(H), monsters)
+    // });
+    // interval(1, ()=>{
+    //     monsters.loop(monster=>{
+    //         monster.scale = rand(1,2);            
+    //     });
+    //     S.update();
+    // });
+
+    // new Button({label:"DROP"})
+    //     .pos(30,30,RIGHT)
+    //     .tap(e=>{
+    //         e.target.animate({y:700}, .9, "bounceOut");
+    //     });
+
+    // new Circle(20,blue).center().drag();
+    
+    // function answer(value) {
+    //     if (value==10) zog("yes");
+    //     else zog("no");
+    // }
+    // answer(10);
+
+    const students = ["Aurelia", "Jamila", "Clay"]
+    for (let i=0; i<students.length; i++) {
+        zogg(i+1 + " " + students[i])
+    }
+
+
+    // setInerval(()=>{}, 1000)
+
+} // end ready
+
+</script>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body></body>
+</html>
