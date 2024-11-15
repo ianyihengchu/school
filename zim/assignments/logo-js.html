@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>JavaScript - Code Creativity</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background-color: black;
+        height: 100vh;
+    }
+    #logo-container {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        height: 150px;
+        background-color: black;
+        border: 5px solid white;
+        cursor: grab;
+        user-select: none;
+        overflow: hidden;
+    }
+    #logo-text {
+        font-size: 100px;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        white-space: nowrap;
+        position: absolute;
+    }
+    .star {
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
+    }
+    .green-star {
+        position: absolute;
+        color: green;
+        font-size: 0;
+    }
+</style>
+</head>
+<body>
+    <div id="logo-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" data-initial-top="50%" data-initial-left="50%">
+        <div id="logo-text">YIHENG</div>
+    </div>
+
+<script>
+    const logoContainer = document.getElementById("logo-container");
+    const logoText = document.getElementById("logo-text");
+    
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    logoContainer.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - logoContainer.getBoundingClientRect().left;
+        offsetY = e.clientY - logoContainer.getBoundingClientRect().top;
+        logoContainer.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        logoContainer.style.position = "absolute";
+        logoContainer.style.top = logoContainer.dataset.initialTop;
+        logoContainer.style.left = logoContainer.dataset.initialLeft;
+        logoContainer.style.left = `${e.clientX - offsetX}px`;
+        logoContainer.style.top = `${e.clientY - offsetY}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+        logoContainer.style.cursor = "grab";
+    });
+
+    // Create falling stars
+    function createStar() {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        document.body.appendChild(star);
+
+        const startX = Math.random() * window.innerWidth;
+        const startY = -10;
+        star.style.left = `${startX}px`;
+        star.style.top = `${startY}px`;
+
+        const endY = window.innerHeight + 10;
+        const duration = Math.random() * 3000 + 2000;
+
+        star.animate([
+            { transform: `translateY(${endY}px)` }
+        ], {
+            duration: duration,
+            easing: 'linear',
+            iterations: 1,
+            fill: 'forwards'
+        });
+
+        setTimeout(() => {
+            star.remove();
+        }, duration);
+    }
+
+    // Continuously create stars
+    setInterval(createStar, 100);
+
+    // Add background flash effect and multiple green stars on click
+    function flashBackground(event) {
+        document.body.animate([
+            { backgroundColor: 'white' },
+            { backgroundColor: 'black' }
+        ], {
+            duration: 100,
+            easing: 'ease-out'
+        });
+
+        // Create multiple rotating green stars at the click position
+        const numStars = Math.floor(Math.random() * 5) + 5; // Generate between 5 and 10 stars
+        for (let i = 0; i < numStars; i++) {
+            const greenStar = document.createElement("div");
+            greenStar.classList.add("green-star");
+            greenStar.innerHTML = "★"; // Unicode for star symbol
+            const size = Math.random() * 50 + 20;
+            greenStar.style.fontSize = `${size}px`;
+            greenStar.style.left = `${event.clientX - size / 2}px`;
+            greenStar.style.top = `${event.clientY - size / 2}px`;
+            document.body.appendChild(greenStar);
+
+            greenStar.animate([
+                { transform: 'rotate(0deg)' },
+                { transform: 'rotate(360deg)' }
+            ], {
+                duration: 2000,
+                easing: 'linear',
+                iterations: Infinity
+            });
+
+            // Make the green star fly off screen
+            const endX = Math.random() * window.innerWidth * (Math.random() > 0.5 ? 1 : -1);
+            const endY = Math.random() * window.innerHeight * (Math.random() > 0.5 ? 1 : -1);
+            const duration = Math.random() * 1000 + 500;
+
+            greenStar.animate([
+                { transform: `translate(${endX}px, ${endY}px)` }
+            ], {
+                duration: duration,
+                easing: 'ease-out',
+                iterations: 1,
+                fill: 'forwards'
+            });
+
+            setTimeout(() => {
+                greenStar.remove();
+            }, duration);
+        }
+    }
+
+    document.body.addEventListener("click", (event) => {
+        flashBackground(event);
+    });
+
+    logoContainer.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent triggering body click event
+        flashBackground(e);
+        scatterStars();
+    });
+
+    // Make all stars scatter off screen
+    function scatterStars() {
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            const endX = Math.random() * window.innerWidth * (Math.random() > 0.5 ? 1 : -1);
+            const endY = Math.random() * window.innerHeight * (Math.random() > 0.5 ? 1 : -1);
+            const duration = Math.random() * 1000 + 500;
+
+            star.animate([
+                { transform: `translate(${endX}px, ${endY}px)` }
+            ], {
+                duration: duration,
+                easing: 'ease-out',
+                iterations: 1,
+                fill: 'forwards'
+            });
+
+            setTimeout(() => {
+                star.remove();
+            }, duration);
+        });
+    }
+
+    // Make logo text scroll left to right continuously
+    function scrollLogoText() {
+        const containerWidth = logoContainer.clientWidth;
+        const textWidth = logoText.clientWidth;
+        let position = -textWidth;
+
+        function animateText() {
+            position += 2;
+            if (position > containerWidth) {
+                position = -textWidth;
+            }
+            logoText.style.transform = `translateX(${position}px)`;
+            requestAnimationFrame(animateText);
+        }
+
+        animateText();
+    }
+
+    scrollLogoText();
+</script>
+</body>
+</html>

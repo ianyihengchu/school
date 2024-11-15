@@ -1,0 +1,28 @@
+div {
+    width: 200px;
+    height: 200px;
+    background: #000000;
+    transition: background-color ease-out 60ms;
+}
+.yes {
+    transition-duration: .5s;
+}
+div:hover {
+    background-color: #ffffff;
+}
+
+
+h1 {
+    animation-name: slidein;
+    animation-duration: 2s;
+}
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}

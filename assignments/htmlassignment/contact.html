@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Hybrid world</title>
+    <meta name="description"
+        content="Get in touch with us. Share your interests and let us know how we can help you.">
+    <link rel="icon" href="img/WechatIMG4464.jpg" type="icon">
+</head>
+
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between;">
+        <img src="img/WechatIMG4464.jpg"
+            alt="Site Logo" style="width: 100px; height: auto;">
+        <nav>
+            <ul style="list-style-type: none; padding: 0; margin: 0; display: flex;">
+                <li style="margin-right: 20px;"><a href="index.html">Home</a></li>
+                <li style="margin-right: 20px;"><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <h1>Keep in touch</h1>
+        <form action="process-contact.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <fieldset>
+                <legend>Category Interests:</legend>
+                <input type="checkbox" id="lifestyle" name="interests[]" value="Lifestyle">
+                <label for="lifestyle">Life-style</label>
+                <input type="checkbox" id="music" name="interests[]" value="Music">
+                <label for="music">Music</label>
+                <input type="checkbox" id="art" name="interests[]" value="Art">
+                <label for="art">Art</label>
+            </fieldset>
+
+            <label for="role">Your Role:</label>
+            <select id="role" name="role">
+                <option value="Writer">Writer</option>
+                <option value="Contributor">Contributor</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>This site uses cookies to improve your experience. <a href="#">Accept cookies</a></p>
+    </footer>
+</body>
+
+</html>

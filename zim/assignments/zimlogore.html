@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM - Interactive Logo</title>
+
+<!-- zimjs.com - JavaScript Canvas Framework -->
+<script type="module">
+import zim from "https://zimjs.org/cdn/017/zim";
+
+// see https://zimjs.com
+// and https://zimjs.com/learn
+// and https://zimjs.com/docs
+
+new Frame(FILL, 1024, 768, black, black, ready, "monsters.png", "https://assets.codepen.io/2104200/", new ProgressBar());
+function ready() {
+
+	// given F (Frame), S (Stage), W (width), H (height)
+    // put your code here
+	
+	const emitter = new Emitter({
+		obj:new Sprite({
+			image:"monsters.png", 
+			cols:7, 
+			rows:6,
+			count:7*6-2 // last two places were empty
+		}),
+		width:W, // across the stage
+		height:1, // will put at bottom
+		horizontal:true, // run horizontally across width
+		angle:{min:-90-10, max:-90+10}, // -90 is up
+		interval:.8,
+		force:{min:1, max:2},
+		life:9, // long enough that this force will probably push it off the top of stage
+		gravity:0,
+		random:{frame:{max:7*6-3}}, // randomize the frame number of the sprite
+		shrink:false,
+		warm:true // start with party goers already
+	}).pos(0,-150,CENTER,BOTTOM); // off the bottom 
+
+	
+
+		
+	STYLE = {outlineColor:pink, bold:true}
+	new LabelOnArc("DIAL DA PARTY UP!").sca(.82).rot(-60).center(controls);		
+
+	F.on("resize", ()=>{
+		// the FILL mode scales the stage to fill around the visible window
+		// so parts of the stage will be outside the window 
+		// so a normal pos(30,30,RIGHT,BOTTOM) would not always work
+		controls.loc(
+			F.visibleRight-controls.width-30, 
+			F.visibleBottom-controls.height-30
+		);
+	});
+	
+} // end ready
+
+</script>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body></body>
+</html>
+
+// Docs for items used
+// https://zimjs.com/docs.html?item=Frame
+// https://zimjs.com/docs.html?item=Container
+// https://zimjs.com/docs.html?item=Sprite
+// https://zimjs.com/docs.html?item=Circle
+// https://zimjs.com/docs.html?item=LabelOnArc
+// https://zimjs.com/docs.html?item=Dial
+// https://zimjs.com/docs.html?item=change
+// https://zimjs.com/docs.html?item=pos
+// https://zimjs.com/docs.html?item=loc
+// https://zimjs.com/docs.html?item=mov
+// https://zimjs.com/docs.html?item=rot
+// https://zimjs.com/docs.html?item=sca
+// https://zimjs.com/docs.html?item=center
+// https://zimjs.com/docs.html?item=Emitter
+// https://zimjs.com/docs.html?item=toAlpha
+// https://zimjs.com/docs.html?item=STYLE

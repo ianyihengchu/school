@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM - Interactive Logo</title>
+
+<!-- zimjs.com - JavaScript Canvas Framework -->
+<script type="module">
+import zim from "https://zimjs.org/cdn/017/zim";
+
+new Frame(FIT, 800, 600, "#222", "#111", ready);
+
+function ready() {
+    const { stage, width, height } = this;
+
+    // Create a logo container
+    const logo = new Rectangle(300, 100, "#333")
+        .center()
+        .border(5, "white")
+        .cursor("pointer")
+        .drag();
+
+    // Add text to the logo
+    const logoText = new Label({
+        text: "My Logo",
+        size: 50,
+        color: "white",
+        font: "Arial",
+        align: "center",
+        valign: "center"
+    }).addTo(logo);
+
+    // Click interaction - animates the logo
+    logo.on("click", () => {
+        logo.sca(1).animate({
+            props: { scale: 1.2, rotation: 360 },
+            time: 500,
+            loopCount: 1,
+            rewind: true
+        });
+    });
+
+    // Update the stage to show all changes
+    stage.update();
+}
+</script>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body></body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM - Code Creativity</title>
+
+<script type="module">
+import zim from "https://zimjs.org/cdn/017/zim";
+
+new Frame(FILL, 1024, 768, black, black, ready);
+function ready() { 
+
+    const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#FFF033", "#33FFF2"];
+    const fonts = ["Arial", "Courier New", "Verdana", "Georgia", "Impact", "Comic Sans MS"];
+
+    function createRandomZimLogo() {
+        return new Label({
+            text: "zim",
+            size: 40,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            font: fonts[Math.floor(Math.random() * fonts.length)],
+            align: "center",
+            valign: "center"
+        });
+    }
+	
+	const emitter = new Emitter({
+		obj: createRandomZimLogo,
+		width: W,
+		height: 1,
+		horizontal: true,
+		angle: { min: -100, max: -80 },
+		interval: 0.8,
+		force: { min: 1, max: 2 },
+		life: 9,
+		gravity: 0,
+		shrink: false,
+		warm: true
+	}).pos(0, -150, CENTER, BOTTOM);
+
+	F.on("stagemousedown", () => {
+		emitter.obj = createRandomZimLogo;
+	});
+
+	const controls = new Container(300, 100);
+	new Rectangle(300, 100, black.toAlpha(.5)).center(controls);
+	
+	const slider = new Slider({
+		min: 0.1,
+		max: 1.5,
+		step: 0.05,
+		barLength: 250,
+		barColor: purple,
+		handleColor: pink,
+		vertical: false
+	}).center(controls).mov(0, -10).change(() => {
+		emitter.interval = slider.min + slider.max - slider.currentValue;
+	});
+
+	STYLE = { outlineColor: pink, bold: true };
+	new Label({
+		text: "slide to speed up",
+		size: 20,
+		color: white
+	}).center(controls).mov(0, 30);
+
+	slider.currentValue = slider.min + slider.max - emitter.interval;
+
+	controls.pos(30, H - controls.height - 30);
+
+	F.on("resize", () => {
+		controls.pos(30, F.visibleBottom - controls.height - 30);
+	});
+}
+
+</script>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body></body>
+</html>
